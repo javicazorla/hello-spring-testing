@@ -9,20 +9,6 @@ pipeline {
 
     stages {
 
-        stage('Test') {
-            steps { 
-                withGradle {
-                    sh './gradlew clean test'
-                }
-
-                post {
-                    always {
-                        junit 'build/test-results/test/TEST-*.xml'
-                    }
-                }
-            }
-        }
-
         stage('Build') {
             steps { 
                 withGradle {
@@ -32,6 +18,20 @@ pipeline {
                 post {
                     success {
                         archiveArtifacts 'build/libs/*.jar'
+                    }
+                }
+            }
+        }
+
+        stage('Test') {
+            steps { 
+                withGradle {
+                    sh './gradlew clean test'
+                }
+
+                post {
+                    always {
+                        junit 'build/test-results/test/TEST-*.xml'
                     }
                 }
             }
