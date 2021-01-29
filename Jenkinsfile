@@ -10,19 +10,23 @@ pipeline {
     stages {
 
         stage('Test') {
-            withGradle {
-                sh './gradlew test'
+            steps { 
+                withGradle {
+                    sh './gradlew test'
+                }
             }
         }
 
         stage('Build') {
-            withGradle {
-                sh './gradlew assemble'
-            }
+            steps { 
+                withGradle {
+                    sh './gradlew assemble'
+                }
 
-            post {
-                success {
-                    archiveArtifacts 'build/libs/*.jar'
+                post {
+                    success {
+                        archiveArtifacts 'build/libs/*.jar'
+                    }
                 }
             }
         }
