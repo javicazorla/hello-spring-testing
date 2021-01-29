@@ -5,7 +5,6 @@ pipeline {
     options {
         ansiColor('xterm')
     }
-
     stages {
         stage('Test') {
             steps {
@@ -13,7 +12,6 @@ pipeline {
             }
         }
     }
-
     stages {
         stage('Build') {
             steps {
