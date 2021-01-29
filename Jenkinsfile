@@ -12,7 +12,7 @@ pipeline {
         stage('Test') {
             steps { 
                 withGradle {
-                    sh './gradlew test'
+                    sh './gradlew clean test'
                 }
 
                 post {
