@@ -5,15 +5,14 @@ pipeline {
         stage('Build') {
 
             steps {
-                sh './gradlew build'
+                sh './gradlew assemble'
             }
         }
 
         stage('Test') {
 
             steps { 
-                sh './gradlew test'
-                sh './gradlew pitest'
+                sh './gradlew clean pitest'
             }
             post {
                 always {
