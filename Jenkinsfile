@@ -4,34 +4,26 @@ pipeline {
     stages {
         stage('Build') {
 
-            steps { 
-                withGradle {
-                    sh './gradlew assemble'
-                }
-            }
-            
-            post {
-                success {
-                    archiveArtifacts 'build/libs/*.jar'
-                }
+            steps {
+                sh './gradlew build'
             }
         }
-
 
         stage('Test') {
 
             steps { 
-                withGradle {
-                    sh './gradlew clean test'
+                sh './gradlew test'
+                sh './gradlew pitest'
+            }
+            post {
+                always {
+                    step(pitmutation 
+                        killRatioMustImprove: false, 
+                        minimumKillRatio: 50.0, 
+                        mutationStatsFile: 'build/reports/pitest/mutations.xml'
                 }
             }
 
-            post {
-                always {
-                    junit 'build/test-results/test/TEST-*.xml'
-                    jacoco(execPattern: 'target/jacoco.exec')
-                }
-            }
         }
     }
 }
