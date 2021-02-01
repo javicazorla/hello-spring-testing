@@ -16,9 +16,7 @@ pipeline {
             }
             post {
                 always {
-                    steps {
-                        pitmutation mutationStatsFile: 'build/reports/pitest/mutations.xml'
-                    }    
+                        pitmutation mutationStatsFile: 'build/reports/pitest/**/mutations.xml'    
                 }
             }
         }
