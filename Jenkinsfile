@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
 
             steps {
-                sh './gradlew assemble'
+                sh './gradlew build'
             }
         }
 
@@ -16,7 +16,7 @@ pipeline {
             }
             post {
                 always {
-                        pitmutation mutationStatsFile: 'build/reports/pitest/**/mutations.xml'    
+                    pitmutation mutationStatsFile: 'build/reports/pitest/**/mutations.xml'    
                 }
             }
         }
