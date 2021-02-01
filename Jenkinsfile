@@ -23,6 +23,7 @@ pipeline {
             steps { 
                 withGradle {
                     sh './gradlew clean test'
+                    sh './gradlew clean pitest'
                 }
             }
 
