@@ -18,7 +18,7 @@ pipeline {
             post {
                 always {
                     steps {
-                        pitmutation killRatioMustImprove: false, minimumKillRatio: 50.0, mutationStatsFile: 'build/reports/pitest/mutations.xml'
+                        pitmutation mutationStatsFile: 'build/reports/pitest/mutations.xml'
                     }    
                 }
             }
