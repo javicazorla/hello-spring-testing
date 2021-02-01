@@ -20,7 +20,7 @@ pipeline {
                     step(pitmutation 
                         killRatioMustImprove: false, 
                         minimumKillRatio: 50.0, 
-                        mutationStatsFile: 'build/reports/pitest/mutations.xml'
+                        mutationStatsFile: 'build/reports/pitest/mutations.xml')
                 }
             }
 
