@@ -4,19 +4,31 @@ pipeline {
     stages {
         stage('Build') {
 
-            steps {
-                sh './gradlew build'
+            steps { 
+                withGradle {
+                    sh './gradlew assemble'
+                }
+            }
+            
+            post {
+                success {
+                    archiveArtifacts 'build/libs/*.jar'
+                }
             }
         }
+
 
         stage('Test') {
 
             steps { 
-                sh './gradlew pitest'
+                withGradle {
+                    sh './gradlew clean test'
+                }
             }
+
             post {
                 always {
-                    pitmutation mutationStatsFile: 'build/reports/pitest/**/mutations.xml'    
+                    pitmutation mutationStatsFile: 'build/reports/pitest/**/mutations.xml'
                 }
             }
         }
