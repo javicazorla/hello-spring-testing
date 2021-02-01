@@ -12,7 +12,7 @@ pipeline {
         stage('Test') {
 
             steps { 
-                sh './gradlew pitest'
+                sh './gradlew clean pitest'
             }
             post {
                 always {
