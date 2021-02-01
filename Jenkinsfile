@@ -21,6 +21,7 @@ pipeline {
                         killRatioMustImprove: false, 
                         minimumKillRatio: 50.0, 
                         mutationStatsFile: 'build/reports/pitest/mutations.xml')
+                    }
                 }
             }
 
