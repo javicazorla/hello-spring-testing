@@ -33,7 +33,7 @@ pipeline {
                     jacoco(execPattern: 'build/jacoco/test.exec')
                     recordIssues(
                         enabledForFailure: true,
-                        tool: pmdParser(pattern: '**/build/reports/pmd/pmd.xml')
+                        tool: pmdParser(pattern: '**/build/reports/pmd/*.xml')
                     )
 
                 }
