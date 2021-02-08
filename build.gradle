@@ -3,6 +3,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 	id 'jacoco'
+	id 'pmd'
 }
 
 group = 'com.example'
@@ -35,4 +36,12 @@ jacocoTestReport {
 jacoco {
     toolVersion = "0.8.6"
     reportsDir = file("$buildDir/jacoco")
+}
+
+pmd {
+    consoleOutput = true
+    toolVersion = "6.21.0"
+   // rulesMinimumPriority = 5
+    ruleSets = ["category/java/errorprone.xml", "category/java/bestpractices.xml"]
+    ignoreFailures = true
 }
