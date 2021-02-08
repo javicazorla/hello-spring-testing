@@ -47,7 +47,7 @@ pipeline {
         
         stage('SonarQube analysis') {
             steps { 
-                configFileProvider([configFile(fileId: 'hello-spring-test', targetLocation: 'gradle.properties')]) {
+                withSonarQubeEnv(credentialsId: '69314d91-0e1d-4709-9e60-2392f61f2e28', installationName: 'local') {
                     sh './gradlew sonarqube'
                 }
             }
