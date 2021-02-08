@@ -23,6 +23,7 @@ pipeline {
             steps { 
                 withGradle {
                     sh './gradlew clean test'
+                    sh './gradlew check'
                 }
             }
 
@@ -30,6 +31,11 @@ pipeline {
                 always {
                     junit 'build/test-results/test/TEST-*.xml'
                     jacoco(execPattern: 'build/jacoco/test.exec')
+                    recordIssues(
+                        enabledForFailure: true,
+                        tool: pmdParser(pattern: '**/build/reports/pmd/pmd.xml')
+                    )
+
                 }
             }
         }
