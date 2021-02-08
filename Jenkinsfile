@@ -43,8 +43,7 @@ pipeline {
 
                 }
             }
-        }
-
+        
         stage('SonarQube analysis') {
             configFileProvider([configFile(fileId: 'hello-spring-testing', targetLocation: 'gradle.properties')]) {
                     withSonarQubeEnv() { // Will pick the global server connection you have configured
