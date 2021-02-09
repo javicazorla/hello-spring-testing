@@ -59,3 +59,4 @@ dependencyCheck {
     cveValidForHours=1
     format='XML'
 }
+check.dependsOn dependencyCheckAnalyze
