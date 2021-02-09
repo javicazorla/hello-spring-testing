@@ -2,6 +2,22 @@ pipeline {
     agent any
 
     stages {
+        
+        stage('OWASP Dependency-Check') {
+
+            steps { 
+                withGradle {
+                    sh './gradlew dependencyCheckAnalyze'
+                }
+            }
+            
+            post {
+                always {
+                    dependencyCheckPublisher pattern: 'build/reports/dependency-check-report.xml'
+                }
+            }
+        }
+        
         stage('Build') {
 
             steps { 
