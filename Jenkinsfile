@@ -7,6 +7,7 @@ pipeline {
 
             steps { 
                 withGradle {
+                    sh './gradlew'
                     sh './gradlew dependencyCheckAnalyze'
                 }
             }
