@@ -57,6 +57,6 @@ spotbugs {
 dependencyCheck {
     autoUpdate=false
     cveValidForHours=1
-    format='XML'
+    format='ALL'
 }
 check.dependsOn dependencyCheckAnalyze
